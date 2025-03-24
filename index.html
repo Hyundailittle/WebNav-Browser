@@ -7,50 +7,29 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
             text-align: center;
-            padding: 1em;
+            margin: 50px;
+            background-color: #f4f4f4;
         }
-        main {
-            padding: 20px;
+        input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
         }
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Welcome to Vibe Browser</h1>
-</header>
+    <h1>Vibe Browser</h1>
+    <input type="text" id="urlInput" placeholder="Enter website URL">
+    <button onclick="loadPage()">Go</button>
 
-<main>
-    <h2>Start Browsing!</h2>
-    <div>
-    <label for="searchInput">Search the web:</label>
-    <input type="text" id="searchInput" placeholder="Type your search">
-    <button onclick="searchWeb()">Search</button>
-</div>
-    <p>This is just the beginning of your Vibe Browser project.</p>
-</main>
+    <script src="app.js"></script>
 
-<footer>
-    <p>&copy; 2025 Vibe Browser</p>
-</footer>
-
-</<input type="text" id="urlInput" placeholder="Enter URL" />
-<button onclick="loadPage()">Go</button>
-<iframe id="browserFrame"></iframe>>
+</body>
 </html>
