@@ -32,4 +32,4 @@ function loadPage() {
             window.location.href = `https://duckduckgo.com/?q=${searchQuery}`;  // Redirect to DuckDuckGo
         }
     }, 2000);  // Wait for 2 seconds before checking if the iframe is loaded
-}
+} 
