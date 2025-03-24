@@ -19,10 +19,10 @@
         #searchBox {
             margin: 20px;
         }
-        #quickLinks, #bookmarks {
+        #quickLinks {
             margin: 20px;
         }
-        .quick-link, .bookmark {
+        .quick-link {
             display: inline-block;
             padding: 10px 15px;
             background-color: #00796B; /* Medium teal */
@@ -32,7 +32,7 @@
             margin: 5px;
             font-weight: bold;
         }
-        .dark-mode .quick-link, .dark-mode .bookmark {
+        .dark-mode .quick-link {
             background-color: #009688; /* Lighter teal in dark mode */
         }
         input, button {
@@ -83,12 +83,6 @@
         <h3>Set Homepage:</h3>
         <input type="text" id="homepageInput" placeholder="Enter your preferred homepage">
         <button onclick="setHomepage()">Save</button>
-    </div>
-
-    <div id="bookmarks">
-        <h3>Bookmarks</h3>
-        <button onclick="addBookmark()">Bookmark This Page</button>
-        <ul id="bookmarkList"></ul>
     </div>
 
     <script src="app.js"></script>
