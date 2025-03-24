@@ -1,65 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebNavi Browser</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-            background-color: #e0f7fa; /* Light blue background */
-            color: #00796b; /* Green text color */
-        }
-        input {
-            width: 60%;
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #00796b; /* Green border */
-            border-radius: 5px;
-            background-color: #ffffff; /* White background for input */
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #00796b; /* Green button */
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #004d40; /* Dark green on hover */
-        }
-        .quick-links {
-            margin-top: 30px;
-        }
-        .quick-links a {
-            text-decoration: none;
-            margin: 10px;
-            font-size: 20px;
-            color: #00796b; /* Green links */
-        }
-        .quick-links a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
+function loadPage() {
+    const urlInput = document.getElementById("urlInput");
+    let url = urlInput.value.trim();
 
-    <h1>WebNavi Browser</h1>
-    <input type="text" id="urlInput" placeholder="Enter website URL">
-    <button onclick="loadPage()">Go</button>
+    // Improved URL validation
+    // Check if the URL includes a protocol (http or https)
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        // If it does not have "http://" or "https://", add "http://" by default
+        if (url.includes(".")) {  // If the URL contains a period, we assume it's a domain
+            url = "http://" + url;  // Add "http://" if no protocol is provided
+        } else {
+            alert("Please enter a valid URL.");  // Alert if the user input is invalid
+            return;
+        }
+    }
 
-    <div class="quick-links">
-        <h3>Quick Links</h3>
-        <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox</a>
-        <a href="https://www.youtube.com" target="_blank">YouTube</a>
-        <a href="https://www.quora.com" target="_blank">Quora</a>
-    </div>
+    // Try to load the page in an iframe
+    const iframe = document.createElement("iframe");
+    iframe.src = url;
 
-    <script src="app.js"></script>
+    iframe.style.width = "100%";
+    iframe.style.height = "600px";
 
-</body>
-</html>
+    // Append iframe to body to load the webpage
+    document.body.appendChild(iframe);
+
+    // Wait a moment to check if the iframe can load the page successfully
+    setTimeout(function() {
+        if (!iframe.contentDocument || iframe.contentDocument.location.href === "about:blank") {
+            // If the iframe is still blank, search the term on DuckDuckGo
+            const searchQuery = encodeURIComponent(urlInput.value);  // Get the entered query
+            window.location.href = `https://duckduckgo.com/?q=${searchQuery}`;  // Redirect to DuckDuckGo
+        }
+    }, 2000);  // Wait for 2 seconds before checking if the iframe is loaded
+}
