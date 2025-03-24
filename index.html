@@ -8,58 +8,67 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 50px;
-            background-color: #e0f7fa; /* Light blue background */
-            color: #00796b; /* Green text color */
+            background-color: #e3f2fd;
+            color: black;
         }
-        input {
-            width: 60%;
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #00796b; /* Green border */
-            border-radius: 5px;
-            background-color: #ffffff; /* White background for input */
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #00796b; /* Green button */
+        .dark-mode {
+            background-color: #121212;
             color: white;
-            border: none;
-            border-radius: 5px;
         }
-        button:hover {
-            background-color: #004d40; /* Dark green on hover */
+        #searchBox {
+            margin: 20px;
         }
-        .quick-links {
-            margin-top: 30px;
+        #quickLinks, #bookmarks {
+            margin: 20px;
         }
-        .quick-links a {
+        .quick-link, .bookmark {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0288d1;
+            color: white;
             text-decoration: none;
-            margin: 10px;
-            font-size: 20px;
-            color: #00796b; /* Green links */
+            border-radius: 5px;
+            margin: 5px;
         }
-        .quick-links a:hover {
-            text-decoration: underline;
+        .dark-mode .quick-link, .dark-mode .bookmark {
+            background-color: #1e88e5;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
         }
     </style>
 </head>
 <body>
+    <h1>Welcome to WebNavi Browser</h1>
 
-    <h1>WebNavi Browser</h1>
-    <input type="text" id="urlInput" placeholder="Enter website URL">
-    <button onclick="loadPage()">Go</button>
+    <div id="searchBox">
+        <input type="text" id="urlInput" placeholder="Enter a URL or search query">
+        <button onclick="loadPage()">Go</button>
+    </div>
 
-    <div class="quick-links">
+    <label><input type="checkbox" id="incognitoMode"> Private Mode</label>
+    <button onclick="toggleTheme()">Toggle Dark Mode</button>
+
+    <div id="quickLinks">
         <h3>Quick Links</h3>
-        <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox</a>
-        <a href="https://www.youtube.com" target="_blank">YouTube</a>
-        <a href="https://www.quora.com" target="_blank">Quora</a>
+        <a href="https://www.mozilla.org/en-US/firefox/" class="quick-link" target="_blank">Firefox</a>
+        <a href="https://www.youtube.com/" class="quick-link" target="_blank">YouTube</a>
+        <a href="https://www.quora.com/" class="quick-link" target="_blank">Quora</a>
+    </div>
+
+    <div>
+        <h3>Set Homepage:</h3>
+        <input type="text" id="homepageInput" placeholder="Enter your preferred homepage">
+        <button onclick="setHomepage()">Save</button>
+    </div>
+
+    <div id="bookmarks">
+        <h3>Bookmarks</h3>
+        <button onclick="addBookmark()">Bookmark This Page</button>
+        <ul id="bookmarkList"></ul>
     </div>
 
     <script src="app.js"></script>
-
 </body>
 </html>
